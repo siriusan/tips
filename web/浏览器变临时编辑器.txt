@@ -1,0 +1,35 @@
+一行代码，浏览器变临时编辑器
+
+这是 Jose 在CoderWall 分享的一个小技巧：在浏览器地址栏中输入下面这行代码，回车即可把浏览器变临时编辑器。
+
+data:text/html, <html contenteditable>
+为什么它能奏效？
+
+这是用了数据URI的格式（Data URI’s format），并告诉浏览器渲染 HTML。不过 contenteditable 是 HTML5 的一个新全局属性，所以这个小技巧只能用于支持该属性的现代浏览器。（IE 8 – 就不行了 :( ）
+
+jakeonrails 童鞋改成了一个支持 Ruby 代码高亮的编辑器  https://gist.github.com/4666256
+
+slawdan 提示说：如果把上面的 ace/mode/ruby 改成 ace/mode/python，那么就得到了一个 Python 版的编辑器咯。其他语言依此类推。
+
+● jdkanani 后来的补充：（2013-1-30 22:06:48 更新）
+
+改造成支持其他语言语法高亮的，可把 ace/mode/ruby 替换为：
+ 
+Python -> ace/mode/python
+C/C++ -> ace/mode/c_cpp
+Javscript -> ace/mode/javascript
+Java -> ace/mode/java
+Scala -> ace/mode/scala
+Markdown -> ace/mode/markdown
+CoffeeScript -> ace/mode/coffee
+其他……
+ 
+jakeonrails 语法高亮风格用的是 monokai。
+如果需要换成其他风格，，可把 ace/theme/monokai 替换为：
+ 
+Eclipse -> ace/theme/eclipse
+TextMate -> ace/theme/textmate
+其他……
+
+java:
+data:text/html, <style type="text/css">#e{position:absolute;top:0;right:0;bottom:0;left:0;}</style><div id=%22e%22></div><script src=%22http://d1n0x3qji82z53.cloudfront.net/src-min-noconflict/ace.js%22 type=%22text/javascript%22 charset=%22utf-8%22></script><script>var e=ace.edit(%22e%22);e.setTheme(%22ace/theme/monokai%22);e.getSession().setMode(%22ace/mode/java%22);</script>
